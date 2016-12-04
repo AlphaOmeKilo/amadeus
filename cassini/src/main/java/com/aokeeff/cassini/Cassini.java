@@ -21,9 +21,14 @@ public class Cassini {
 
     public void populateStatsPack() throws IOException {
         this.statsPack = new StatsPack();
-        WebScraper.getInstance().scrape(this.statsPack);
+        WebScraper webScraper = WebScraper.getInstance();
+        webScraper.scrapeResults(this.statsPack);
+        webScraper.scrapeFixtures(this.statsPack);
 
-        statsPack.getLeagueTable();
+
+//        statsPack.printLeagueTable();
+        statsPack.printFixtures();
+//        statsPack.printResults();
 
     }
 }

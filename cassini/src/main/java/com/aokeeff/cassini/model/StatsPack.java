@@ -40,7 +40,7 @@ public class StatsPack {
         return footballTeams;
     }
 
-    public void getLeagueTable() {
+    public void printLeagueTable() {
         Map<String, FootballTeam> footballTeams = getFootballTeams();
         List<FootballTeam> footballTeamsCopy = new ArrayList<>();
 
@@ -63,6 +63,29 @@ public class StatsPack {
             footballTeamsCopy.removeIf(footballTeam -> footballTeam.getTeamName().equals(this.teamName));
         }
     }
+
+    public void printFixtures() {
+        List<FootballMatch> footballMatches = getFootballMatches();
+        footballMatches.stream()
+                .filter(footballMatch -> !footballMatch.isPlayed())
+                .forEach(footballMatch ->
+                        System.out.println(format("%s v %s",
+                                footballMatch.getHomeTeam().getTeamName(),
+                                footballMatch.getAwayTeam().getTeamName())));
+    }
+
+    public void printResults() {
+        List<FootballMatch> footballMatches = getFootballMatches();
+        footballMatches.stream()
+                .filter(footballMatch -> footballMatch.isPlayed())
+                .forEach(footballMatch ->
+                        System.out.println(format("%s %d - %d %s",
+                        footballMatch.getHomeTeam().getTeamName(),
+                        footballMatch.getScore().getHomeGoals(),
+                        footballMatch.getScore().getAwayGoals(),
+                        footballMatch.getAwayTeam().getTeamName())));
+    }
+
 
     private void setTotalPointsCurrent(int totalPoints, String teamName) {
         this.totalPoints = totalPoints;

@@ -8,6 +8,7 @@ public class FootballMatch {
     private FootballTeam homeTeam;
     private FootballTeam awayTeam;
     private Score score;
+    private boolean played;
 
     private StatsPack statsPack;
 
@@ -15,6 +16,7 @@ public class FootballMatch {
         this.statsPack = statsPack;
         setHomeTeam(homeTeam);
         setAwayTeam(awayTeam);
+        played = false;
     }
 
     public FootballTeam getHomeTeam() {
@@ -41,6 +43,14 @@ public class FootballMatch {
         this.awayTeam = statsPack.getFootballTeam(teamName);
     }
 
+    private void setPlayed() {
+        this.played = true;
+    }
+
+    public boolean isPlayed() {
+        return this.played;
+    }
+
     public int setScore(String score) {
         this.score = new Score(score);
         if (this.score.homeGoals < 0) {
@@ -50,6 +60,8 @@ public class FootballMatch {
         awayTeam.addGoals(this.score.awayGoals);
 
         addPoints();
+
+        setPlayed();
 
         return 0;
     }

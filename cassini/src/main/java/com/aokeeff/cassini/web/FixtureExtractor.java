@@ -6,28 +6,19 @@ import com.aokeeff.cassini.model.StatsPack;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import static java.lang.String.format;
-
 /**
  * Created by aokeeff on 04/12/2016.
  */
-public class ResultExtractor {
+public class FixtureExtractor {
+    public static void extractFixture(StatsPack statsPack, Element matchDetail) throws  InvalidMatchElementException {
 
-    public static void extractResult(StatsPack statsPack, Element matchElement) throws InvalidMatchElementException {
-        String homeTeam = extractTeamName(matchElement, "team-home");
-        String awayTeam = extractTeamName(matchElement, "team-away");
+        String homeTeam = extractTeamName(matchDetail, "team-home");
+        String awayTeam = extractTeamName(matchDetail, "team-away");
 
         FootballMatch footballMatch = new FootballMatch(statsPack, homeTeam, awayTeam);
 
-        int scoreExtractionResult = footballMatch.setScore(extractScore(matchElement));
-        if (scoreExtractionResult == 0) {
-            statsPack.addFootballMatch(footballMatch);
-        }
+        statsPack.addFootballMatch(footballMatch);
 
-    }
-
-    private static String extractScore(Element matchElement) {
-        return matchElement.getElementsByTag("abbr").get(0).text();
     }
 
     private static String extractTeamName(Element matchElement, String className) throws InvalidMatchElementException {
