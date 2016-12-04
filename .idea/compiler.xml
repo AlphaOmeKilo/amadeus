@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="cassini" />
+        <module name="deepthought" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="amadeus" target="1.8" />
-      <module name="cassini" target="1.8" />
+      <module name="amadeus" target="1.5" />
+      <module name="cassini" target="1.5" />
+      <module name="deepthought" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

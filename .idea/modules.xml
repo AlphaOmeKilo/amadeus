@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/amadeus.iml" filepath="$PROJECT_DIR$/amadeus.iml" />
       <module fileurl="file://$PROJECT_DIR$/cassini/cassini.iml" filepath="$PROJECT_DIR$/cassini/cassini.iml" />
+      <module fileurl="file://$PROJECT_DIR$/deepthought/deepthought.iml" filepath="$PROJECT_DIR$/deepthought/deepthought.iml" />
     </modules>
   </component>
 </project>
